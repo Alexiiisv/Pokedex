@@ -5,8 +5,6 @@
 #### Si votre souhait est d'avoir votre propre Pokedex, cet application est faite pour vous !
 
 <br>
-<br>
-<br>
 
 ## Rendu du 19 décembre 2022
 
@@ -22,3 +20,4 @@
 - call plus avancé de l'api [PokeAPI](https://pokeapi.co/docs/v2#pokemon)
 - possibilité de switch entre les pokemon
 - filtre des pokemon
+- notification pushs
