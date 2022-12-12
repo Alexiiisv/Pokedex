@@ -1,0 +1,122 @@
+{
+    "config": {
+        "adapter": [Function xhrAdapter
+        ],
+        "data": "{}",
+        "env": {
+            "FormData": null
+        },
+        "headers": {
+            "Accept": "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        },
+        "maxBodyLength": -1,
+        "maxContentLength": -1,
+        "method": "post",
+        "timeout": 0,
+        "transformRequest": [
+            [Function transformRequest
+            ]
+        ],
+        "transformResponse": [
+            [Function transformResponse
+            ]
+        ],
+        "transitional": {
+            "clarifyTimeoutError": false,
+            "forcedJSONParsing": true,
+            "silentJSONParsing": true
+        },
+        "url": "https://login.hikkary.com/users/login",
+        "validateStatus": [Function validateStatus
+        ],
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN"
+    },
+    "data": {
+        "errors": "badLogin",
+        "errorsDetails": {
+            "_object": [Object
+            ],
+            "details": [Array
+            ],
+            "isJoi": true,
+            "name": "ValidationError"
+        },
+        "status": false
+    },
+    "headers": {
+        "access-control-allow-origin": "*",
+        "connection": "keep-alive",
+        "content-length": "375",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sun, 11 Dec 2022 18:51:08 GMT",
+        "etag": "W/\"177-yiK0Lfq0FWpcAOztKd1Bm2IVCuA\"",
+        "server": "nginx/1.14.0 (Ubuntu)",
+        "x-powered-by": "Express"
+    },
+    "request": {
+        "DONE": 4,
+        "HEADERS_RECEIVED": 2,
+        "LOADING": 3,
+        "OPENED": 1,
+        "UNSENT": 0,
+        "_aborted": false,
+        "_cachedResponse": undefined,
+        "_hasError": false,
+        "_headers": {
+            "accept": "application/json, text/plain, */*",
+            "content-type": "application/json"
+        },
+        "_incrementalEvents": false,
+        "_lowerCaseResponseHeaders": {
+            "access-control-allow-origin": "*",
+            "connection": "keep-alive",
+            "content-length": "375",
+            "content-type": "application/json; charset=utf-8",
+            "date": "Sun, 11 Dec 2022 18:51:08 GMT",
+            "etag": "W/\"177-yiK0Lfq0FWpcAOztKd1Bm2IVCuA\"",
+            "server": "nginx/1.14.0 (Ubuntu)",
+            "x-powered-by": "Express"
+        },
+        "_method": "POST",
+        "_perfKey": "network_XMLHttpRequest_https://login.hikkary.com/users/login",
+        "_performanceLogger": {
+            "_closed": false,
+            "_extras": [Object
+            ],
+            "_pointExtras": [Object
+            ],
+            "_points": [Object
+            ],
+            "_timespans": [Object
+            ]
+        },
+        "_requestId": null,
+        "_response": "{\"status\":false,\"errors\":\"badLogin\",\"errorsDetails\":{\"isJoi\":true,\"name\":\"ValidationError\",\"details\":[{\"message\":\"\\\"username\\\" is required\",\"path\":[\"username\"],\"type\":\"any.required\",\"context\":{\"key\":\"username\",\"label\":\"username\"}},{\"message\":\"\\\"password\\\" is required\",\"path\":[\"password\"],\"type\":\"any.required\",\"context\":{\"key\":\"password\",\"label\":\"password\"}}],\"_object\":{}}}",
+        "_responseType": "",
+        "_sent": true,
+        "_subscriptions": [],
+        "_timedOut": false,
+        "_trackingName": "unknown",
+        "_url": "https://login.hikkary.com/users/login",
+        "readyState": 4,
+        "responseHeaders": {
+            "Access-Control-Allow-Origin": "*",
+            "Connection": "keep-alive",
+            "Content-Length": "375",
+            "Content-Type": "application/json; charset=utf-8",
+            "Date": "Sun, 11 Dec 2022 18:51:08 GMT",
+            "ETag": "W/\"177-yiK0Lfq0FWpcAOztKd1Bm2IVCuA\"",
+            "Server": "nginx/1.14.0 (Ubuntu)",
+            "X-Powered-By": "Express"
+        },
+        "responseURL": "https://login.hikkary.com/users/login",
+        "status": 200,
+        "timeout": 0,
+        "upload": {},
+        "withCredentials": true
+    },
+    "status": 200,
+    "statusText": undefined
+}
