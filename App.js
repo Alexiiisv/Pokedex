@@ -1,6 +1,8 @@
 import React from 'react';
 import Home from './src/screen/home';
 import Login from './src/screen/login';
+// import {PUBLIC_API_KEY} from '@env';
+
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 

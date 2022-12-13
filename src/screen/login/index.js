@@ -6,11 +6,9 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
-import {checkIdentifiant} from '../../components/auth.components.js';
-import {getData, storeData} from '../../components/storage.components.js';
+import {sendGetRequest} from '../../components/auth/index.js';
+// import {getData, storeData} from '../../components/storage/index.js';
 import React, {useState} from 'react';
-// import axios from 'axios';
 
 const Login = ({navigation}) => {
   const [IUsername, setIUsername] = useState('aze');
@@ -42,15 +40,13 @@ const Login = ({navigation}) => {
             style={styles.submit}
             onPress={async () => {
               //comprendre pourquoi je récup pas le résultat de checkidentifiant
-              const test = await checkIdentifiant(IUsername, IPassword);
-              // if (test) {
-              console.log(
-                'apres check des identifiants, le token est :' +
-                  getData('Token'),
-              );
+              console.log('HALLO');
+              // if (await sendGetRequest(IUsername, IPassword)) {
+              console.log('Réussite de la connexion du compte');
               navigation.navigate('Home');
+              // } else {
+              //   console.log('une erreur est subvenue lors de la connexion');
               // }
-              // checkIdentifiant(IUsername, IPassword);
             }}
             underlayColor="transparent">
             <Text style={styles.buttonText}>Enter App</Text>
