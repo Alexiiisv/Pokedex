@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
+import LinearGradient from 'react-native-linear-gradient';
 import {GetNext20Pokemon} from '../../components/pokemon';
 import {getData} from '../../components/storage';
 
@@ -37,13 +38,22 @@ const Home = ({navigation}) => {
       >
         <View>
           <Text styles={styles.steelblue}>{item.name}</Text>
-          <Image
+          {/* <Image
             styles={styles.Image}
+            // source={{uri: item.infos.sprites.front_default}}
+          /> */}
+          <Image
             source={{uri: item.infos.sprites.front_default}}
+            style={styles.Image}
           />
         </View>
       </TouchableOpacity>
     );
+  };
+
+  const OnClickNextOrPrev = async Key => {
+    await GetNext20Pokemon(await getData(Key));
+    setUpdate(update + 1);
   };
 
   if (IsLoading) {
@@ -66,6 +76,10 @@ const Home = ({navigation}) => {
 
   return (
     <View>
+      <LinearGradient
+        colors={['#4c669f', '#3b5998', '#192f6a']}
+        style={styles.linearGradient}
+      />
       <TouchableOpacity
         style={styles.title}
         onPress={() => navigation.navigate('Login')}>
@@ -75,27 +89,23 @@ const Home = ({navigation}) => {
         <Button
           style={styles.nextPrev}
           title="next"
-          onPress={async () => {
-            const url = await getData('nextListPokemon');
-            console.log(url);
-            await GetNext20Pokemon(url);
-            setUpdate(update + 1);
-            console.log(update);
+          onPress={() => {
+            OnClickNextOrPrev('nextListPokemon');
           }}
         />
         <Button
           style={styles.nextPrev}
           title="previous"
-          onPress={async () => {
-            console.log(await getData('previousListPokemon'));
-            await GetNext20Pokemon(await getData('previousListPokemon'));
-            setUpdate(update + 1);
+          onPress={() => {
+            OnClickNextOrPrev('previousListPokemon');
           }}
         />
       </View>
       <FlatList
         data={pokemon}
         renderItem={Section}
+        numColumns={2}
+        columnWrapperStyle={{justifyContent: 'space-around'}}
         keyExtractor={item => item.name}
       />
     </View>
@@ -112,6 +122,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     justifyContent: 'center',
   },
+  linearGradient: {
+    flex: 1,
+    paddingLeft: 15,
+    paddingRight: 15,
+    borderRadius: 5,
+    justifyContent: 'center',
+  },
   title: {
     fontWeight: 'bold',
     fontSize: 18,
@@ -120,13 +137,14 @@ const styles = StyleSheet.create({
     backgroundColor: 'yellow',
   },
   Image: {
-    width: 50,
-    height: 50,
+    width: 96,
+    height: 96,
     backgroundColor: 'gray',
   },
   nextPrevBtn: {
     flexDirection: 'row',
     marginLeft: 20,
+    marginBottom: 40,
     justifyContent: 'space-evenly',
   },
   nextPrev: {
