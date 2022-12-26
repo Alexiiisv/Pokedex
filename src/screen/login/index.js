@@ -1,46 +1,43 @@
-import {
-  View,
-  StyleSheet,
-  TextInput,
-  Text,
-  TouchableHighlight,
-} from 'react-native';
+import {View, StyleSheet, Text, TouchableHighlight} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {sendGetRequest} from '../../components/auth/index.js';
-// import {getData, storeData} from '../../components/storage/index.js';
+// import {sendGetRequest} from '../../components/auth/index.js';
 import React, {useState} from 'react';
+import {
+  EnterApp,
+  LoginButton,
+  LoginContainer,
+  LoginFormContainer,
+  LoginLabel,
+  LoginLabelContainer,
+  TextInputLogin,
+} from '../../components/styled';
 
 const Login = ({navigation}) => {
   const [IUsername, setIUsername] = useState('aze');
   const [IPassword, setIPassword] = useState('azertyui');
   return (
-    <View style={styles.container}>
-      <View style={styles.loginForm}>
+    <LoginContainer>
+      <LoginFormContainer>
         <LinearGradient
           colors={['#4c669f', '#3b5998', '#192f6a']}
           style={styles.linearGradient}>
-          <View style={styles.containerInput}>
-            <Text style={styles.loginText}>Username</Text>
-            <TextInput
-              style={styles.loginInput}
+          <LoginLabelContainer>
+            <LoginLabel>Username</LoginLabel>
+            <TextInputLogin
               onChangeText={text => setIUsername(text)}
               value={IUsername}
             />
-          </View>
-          <View style={styles.containerInput}>
-            <Text style={styles.loginText}>Password</Text>
-            <TextInput
-              style={styles.loginInput}
+          </LoginLabelContainer>
+          <LoginLabelContainer>
+            <LoginLabel>Password</LoginLabel>
+            <TextInputLogin
               onChangeText={text => setIPassword(text)}
               value={IPassword}
               secureTextEntry={true}
             />
-          </View>
-          <TouchableHighlight
-            style={styles.submit}
+          </LoginLabelContainer>
+          <LoginButton
             onPress={async () => {
-              //comprendre pourquoi je récup pas le résultat de checkidentifiant
-              console.log('HALLO');
               // if (await sendGetRequest(IUsername, IPassword)) {
               console.log('Réussite de la connexion du compte');
               navigation.navigate('Home');
@@ -49,11 +46,11 @@ const Login = ({navigation}) => {
               // }
             }}
             underlayColor="transparent">
-            <Text style={styles.buttonText}>Enter App</Text>
-          </TouchableHighlight>
+            <EnterApp>Enter App</EnterApp>
+          </LoginButton>
         </LinearGradient>
-      </View>
-    </View>
+      </LoginFormContainer>
+    </LoginContainer>
   );
 };
 
@@ -71,7 +68,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingLeft: 15,
     paddingRight: 15,
-    borderRadius: 5,
     justifyContent: 'center',
   },
   text: {

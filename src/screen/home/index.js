@@ -27,7 +27,6 @@ const Home = ({navigation}) => {
   }, [update]);
 
   const Section = ({item}) => {
-    console.log(item.infos.sprites.front_default);
     return (
       <TouchableOpacity
       // onPress={() => {
@@ -38,10 +37,6 @@ const Home = ({navigation}) => {
       >
         <View>
           <Text styles={styles.steelblue}>{item.name}</Text>
-          {/* <Image
-            styles={styles.Image}
-            // source={{uri: item.infos.sprites.front_default}}
-          /> */}
           <Image
             source={{uri: item.infos.sprites.front_default}}
             style={styles.Image}
@@ -75,47 +70,59 @@ const Home = ({navigation}) => {
   }
 
   return (
-    <View>
+    <View style={styles.loginForm}>
       <LinearGradient
         colors={['#4c669f', '#3b5998', '#192f6a']}
-        style={styles.linearGradient}
-      />
-      <TouchableOpacity
-        style={styles.title}
-        onPress={() => navigation.navigate('Login')}>
-        <Text style={styles.buttonText}>Disconnect</Text>
-      </TouchableOpacity>
-      <View style={styles.nextPrevBtn}>
-        <Button
-          style={styles.nextPrev}
-          title="next"
-          onPress={() => {
-            OnClickNextOrPrev('nextListPokemon');
-          }}
+        style={styles.linearGradient}>
+        <TouchableOpacity
+          style={styles.title}
+          onPress={() => navigation.navigate('Login')}>
+          <Text style={styles.buttonText}>Disconnect</Text>
+        </TouchableOpacity>
+        <View style={styles.nextPrevBtn}>
+          <Button
+            style={styles.nextPrev}
+            title="next"
+            onPress={() => {
+              OnClickNextOrPrev('nextListPokemon');
+            }}
+          />
+          <Button
+            style={styles.nextPrev}
+            title="previous"
+            onPress={() => {
+              OnClickNextOrPrev('previousListPokemon');
+            }}
+          />
+        </View>
+        <FlatList
+          data={pokemon}
+          renderItem={Section}
+          numColumns={2}
+          style={{marginBottom: 20}}
+          columnWrapperStyle={{justifyContent: 'space-around'}}
+          keyExtractor={item => item.name}
         />
-        <Button
-          style={styles.nextPrev}
-          title="previous"
-          onPress={() => {
-            OnClickNextOrPrev('previousListPokemon');
-          }}
-        />
-      </View>
-      <FlatList
-        data={pokemon}
-        renderItem={Section}
-        numColumns={2}
-        columnWrapperStyle={{justifyContent: 'space-around'}}
-        keyExtractor={item => item.name}
-      />
+      </LinearGradient>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   steelblue: {
-    color: 'red',
-    fontSize: 15,
+    fontSize: 25,
+    fontFamily: 'Gill Sans',
+    textAlign: 'center',
+    color: '#ffffff',
+    margin: 10,
+  },
+  loginForm: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    justifyContent: 'center',
   },
   buttonText: {
     flex: 1,
@@ -126,7 +133,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingLeft: 15,
     paddingRight: 15,
-    borderRadius: 5,
     justifyContent: 'center',
   },
   title: {
