@@ -55,3 +55,41 @@ export const LoginButton = styled.TouchableHighlight`
   margin-top: 10px;
   padding-top: 10%;
 `;
+
+export const PokemonThumbnail = styled.Image`
+  width: 96px;
+  height: 96px;
+  background-color: white;
+  border-radius: 40px;
+`;
+
+export const PokemonContainer = styled.View`
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+`;
+
+export const PokemonLabel = styled.Text`
+  font-size: 15px;
+  font-family: 'Gill Sans';
+  text-align: center;
+  color: #ffffff;
+  margin: 10px;
+`;
+
+export const NextPreviousButton = styled.Button`
+  height: 40px;
+  width: 100px;
+`;
+
+export const NextPreviousContainer = styled.View`
+  flex-direction: row;
+  margin-left: 20px;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  justify-content: space-evenly;
+`;
+
+export const PokemonFlatList = styled.FlatList`
+  margin-bottom: 20px;
+`;
