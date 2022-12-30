@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+// import {sendGetRequest} from '../../components/auth/index.js';
 import React, {useState} from 'react';
 import {
   EnterApp,
@@ -10,32 +11,14 @@ import {
   LoginLabelContainer,
   TextInputLogin,
 } from '../../components/styled';
-import {sendGetRequest} from '../../utils/auth';
 
-const Login = ({navigation}) => {
-  const [IUsername, setIUsername] = useState('aze');
-  const [IPassword, setIPassword] = useState('azertyui');
+const Pokemon = ({navigation}) => {
   return (
     <LoginContainer>
       <LoginFormContainer>
         <LinearGradient
           colors={['#4c669f', '#3b5998', '#192f6a']}
           style={styles.linearGradient}>
-          <LoginLabelContainer>
-            <LoginLabel>Username</LoginLabel>
-            <TextInputLogin
-              onChangeText={text => setIUsername(text)}
-              value={IUsername}
-            />
-          </LoginLabelContainer>
-          <LoginLabelContainer>
-            <LoginLabel>Password</LoginLabel>
-            <TextInputLogin
-              onChangeText={text => setIPassword(text)}
-              value={IPassword}
-              secureTextEntry={true}
-            />
-          </LoginLabelContainer>
           <LoginButton
             onPress={async () => {
               // if (await sendGetRequest(IUsername, IPassword)) {

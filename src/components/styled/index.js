@@ -29,6 +29,14 @@ export const EnterApp = styled.Text`
   height: 40px;
 `;
 
+export const LoadingText = styled.Text`
+  font-size: 25px;
+  font-family: 'Gill Sans';
+  text-align: center;
+  color: white;
+  height: 40px;
+`;
+
 export const LoginLabel = styled.Text`
   background-color: white;
   font-family: 'Gill Sans';
@@ -60,7 +68,7 @@ export const PokemonThumbnail = styled.Image`
   width: 96px;
   height: 96px;
   background-color: white;
-  border-radius: 40px;
+  /* border-radius: 40px; */
 `;
 
 export const PokemonContainer = styled.View`

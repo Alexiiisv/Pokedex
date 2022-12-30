@@ -17,3 +17,7 @@ export const storeData = async (key, value) => {
     console.log(e);
   }
 };
+
+export const clearAsyncStorage = async () => {
+  AsyncStorage.clear();
+};

@@ -1,7 +1,5 @@
 import axios from 'axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {storeData} from '../storage/index.js';
-import Login from '../../screen/login';
+import {storeData} from '../../components/storage';
 
 export const sendGetRequest = async (UserName, PassWord) => {
   if (UserName.length <= 2 || PassWord.length <= 7) {
