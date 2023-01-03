@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {storeData} from '../../components/storage';
+import {storeData} from '../storage';
 
 export const sendGetRequest = async (UserName, PassWord) => {
   if (UserName.length <= 2 || PassWord.length <= 7) {

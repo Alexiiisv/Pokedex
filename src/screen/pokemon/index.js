@@ -1,36 +1,41 @@
-import {StyleSheet} from 'react-native';
+import {Button, Image, ScrollView, StyleSheet, Text, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-// import {sendGetRequest} from '../../components/auth/index.js';
-import React, {useState} from 'react';
-import {
-  EnterApp,
-  LoginButton,
-  LoginContainer,
-  LoginFormContainer,
-  LoginLabel,
-  LoginLabelContainer,
-  TextInputLogin,
-} from '../../components/styled';
+import React, {useEffect, useState} from 'react';
+import {LoginContainer, LoginFormContainer} from '../../components/styled';
+import {getData} from '../../utils/storage';
+import {Loading} from '../../components/loading';
+import {PokemonMainPage} from '../../components/pokemon';
 
 const Pokemon = ({navigation}) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [pokemon, setPokemon] = useState([]);
+  const [pokeUpdate, setpokeUpdate] = useState(false);
+  const getInfos = async () => {
+    setPokemon(await getData('pokemonInfos'));
+  };
+  useEffect(() => {
+    getInfos();
+  }, []);
+
+  useEffect(() => {
+    if (pokeUpdate) {
+      setIsLoading(false);
+      console.log('data pokemon: ');
+      console.log(pokemon);
+    } else {
+      setpokeUpdate(true);
+    }
+  }, [pokemon]);
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <LoginContainer>
       <LoginFormContainer>
         <LinearGradient
           colors={['#4c669f', '#3b5998', '#192f6a']}
           style={styles.linearGradient}>
-          <LoginButton
-            onPress={async () => {
-              // if (await sendGetRequest(IUsername, IPassword)) {
-              console.log('Réussite de la connexion du compte');
-              navigation.navigate('Home');
-              // } else {
-              //   console.log('une erreur est subvenue lors de la connexion');
-              // }
-            }}
-            underlayColor="transparent">
-            <EnterApp>Enter App</EnterApp>
-          </LoginButton>
+          <PokemonMainPage pokemon={pokemon} navigation={navigation} />
         </LinearGradient>
       </LoginFormContainer>
     </LoginContainer>
@@ -40,10 +45,10 @@ const Pokemon = ({navigation}) => {
 const styles = StyleSheet.create({
   linearGradient: {
     flex: 1,
-    paddingLeft: 15,
-    paddingRight: 15,
+    // paddingLeft: 15,
+    // paddingRight: 15,
     justifyContent: 'center',
   },
 });
 
-export default Login;
+export default Pokemon;

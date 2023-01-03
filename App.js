@@ -1,6 +1,7 @@
 import React from 'react';
 import Home from './src/screen/home';
 import Login from './src/screen/login';
+import Pokemon from './src/screen/pokemon';
 // import {PUBLIC_API_KEY} from '@env';
 import theme from './src/config/theme';
 
@@ -19,6 +20,7 @@ const App = () => {
           screenOptions={{headerShown: false}}>
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Pokemon" component={Pokemon} />
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>

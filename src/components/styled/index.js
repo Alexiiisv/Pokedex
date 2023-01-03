@@ -29,14 +29,6 @@ export const EnterApp = styled.Text`
   height: 40px;
 `;
 
-export const LoadingText = styled.Text`
-  font-size: 25px;
-  font-family: 'Gill Sans';
-  text-align: center;
-  color: white;
-  height: 40px;
-`;
-
 export const LoginLabel = styled.Text`
   background-color: white;
   font-family: 'Gill Sans';
@@ -62,27 +54,6 @@ export const LoginButton = styled.TouchableHighlight`
   margin-left: 40px;
   margin-top: 10px;
   padding-top: 10%;
-`;
-
-export const PokemonThumbnail = styled.Image`
-  width: 96px;
-  height: 96px;
-  background-color: white;
-  /* border-radius: 40px; */
-`;
-
-export const PokemonContainer = styled.View`
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-`;
-
-export const PokemonLabel = styled.Text`
-  font-size: 15px;
-  font-family: 'Gill Sans';
-  text-align: center;
-  color: #ffffff;
-  margin: 10px;
 `;
 
 export const NextPreviousButton = styled.Button`

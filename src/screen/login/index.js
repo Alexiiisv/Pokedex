@@ -38,12 +38,12 @@ const Login = ({navigation}) => {
           </LoginLabelContainer>
           <LoginButton
             onPress={async () => {
-              // if (await sendGetRequest(IUsername, IPassword)) {
-              console.log('Réussite de la connexion du compte');
-              navigation.navigate('Home');
-              // } else {
-              //   console.log('une erreur est subvenue lors de la connexion');
-              // }
+              if (await sendGetRequest(IUsername, IPassword)) {
+                console.log('Réussite de la connexion du compte');
+                navigation.navigate('Home');
+              } else {
+                console.log('une erreur est subvenue lors de la connexion');
+              }
             }}
             underlayColor="transparent">
             <EnterApp>Enter App</EnterApp>
