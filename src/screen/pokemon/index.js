@@ -1,10 +1,10 @@
-import {Button, Image, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import React, {useEffect, useState} from 'react';
 import {LoginContainer, LoginFormContainer} from '../../components/styled';
 import {getData} from '../../utils/storage';
 import {Loading} from '../../components/loading';
-import {PokemonMainPage} from '../../components/pokemon';
+import {PokemonMainPage} from '../../components/pokemonContainer/pokemon';
 
 const Pokemon = ({navigation}) => {
   const [isLoading, setIsLoading] = useState(true);

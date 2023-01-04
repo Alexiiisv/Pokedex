@@ -2,7 +2,6 @@ import React from 'react';
 import Home from './src/screen/home';
 import Login from './src/screen/login';
 import Pokemon from './src/screen/pokemon';
-// import {PUBLIC_API_KEY} from '@env';
 import theme from './src/config/theme';
 
 import {NavigationContainer} from '@react-navigation/native';

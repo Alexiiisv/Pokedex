@@ -1,13 +1,17 @@
 // import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
-import {getAllInfosOfOnePokemon} from '../../utils/pokemon';
-import {PokemonContainer, PokemonLabel, PokemonThumbnail} from './style';
+import {getAllInfosOfOnePokemon} from '../../../utils/pokemon';
+import {
+  PokemonContainer,
+  PokemonLabel,
+  PokemonThumbnail,
+  TouchableOpacityContainer,
+} from './style';
 
-const PokemonFL = ({item, navigation}) => {
+export const PokemonFL = ({item, navigation}) => {
   return (
-    <TouchableOpacity
-      style={{width: '50%'}}
+    <TouchableOpacityContainer
+      key={item.name}
       onPress={async () => {
         await getAllInfosOfOnePokemon(item.infos.pokemon.name);
         navigation.navigate('Pokemon');
@@ -16,8 +20,6 @@ const PokemonFL = ({item, navigation}) => {
         <PokemonLabel>{item.name}</PokemonLabel>
         <PokemonThumbnail source={{uri: item.infos.sprites.front_default}} />
       </PokemonContainer>
-    </TouchableOpacity>
+    </TouchableOpacityContainer>
   );
 };
-
-export default PokemonFL;

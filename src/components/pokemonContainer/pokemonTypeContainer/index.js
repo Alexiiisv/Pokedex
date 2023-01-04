@@ -1,5 +1,4 @@
 import React from 'react';
-import {Text} from 'react-native';
 import {PokemonType} from '../pokemonType';
 import {AlignCenter, MainLabel, PokemonTypeContainer} from './style';
 

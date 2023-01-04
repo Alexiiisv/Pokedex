@@ -4,7 +4,7 @@ import {SvgUri} from 'react-native-svg';
 import {BackgroundMain} from '../pokemonBackground';
 import {PokemonStatsContainer} from '../pokemonStatsContainer';
 import {TypeContainer} from '../pokemonTypeContainer';
-import {MyBackButton} from '../returnBack';
+import {MyBackButton} from '../../returnBack';
 import {PokemonLabel, ThumbnaiContainer} from './style';
 
 export const PokemonMainPage = ({pokemon, navigation}) => {

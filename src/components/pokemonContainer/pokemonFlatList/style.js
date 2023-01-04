@@ -19,3 +19,7 @@ export const PokemonLabel = styled.Text`
   color: #ffffff;
   margin: 10px;
 `;
+
+export const TouchableOpacityContainer = styled.TouchableOpacity`
+  width: 50%;
+`;

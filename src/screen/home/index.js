@@ -1,11 +1,11 @@
 import {ScrollView, StyleSheet} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import {LoginContainer, PokemonFlatList} from '../../components/styled';
+import {LoginContainer} from '../../components/styled';
 import {getData, storeData} from '../../utils/storage';
 import {GetPokemons} from '../../utils/pokemon';
 import {Loading} from '../../components/loading';
-import PokemonFL from '../../components/pokemonFlatList';
+import {PokemonFL} from '../../components/pokemonContainer/pokemonFlatList';
 
 const Home = ({navigation}) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -14,7 +14,7 @@ const Home = ({navigation}) => {
   const getAllPokemons = async () => {
     storeData('Pokemons', JSON.stringify([]));
     await GetPokemons(
-      'https://pokeapi.co/api/v2/pokemon-form/?limit=151',
+      'https://pokeapi.co/api/v2/pokemon-form/?limit=50',
       // 'https://pokeapi.co/api/v2/pokemon-form/?limit=' +
       //   (await getPokemonsCount()),
     );
@@ -36,7 +36,10 @@ const Home = ({navigation}) => {
         colors={['#4c669f', '#3b5998', '#192f6a']}
         style={styles.linearGradient}>
         <ScrollView
-          contentContainerStyle={{flexDirection: 'row', flexWrap: 'wrap'}}>
+          contentContainerStyle={{
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+          }}>
           {pokemon.map(item => {
             return PokemonFL({item, navigation});
           })}

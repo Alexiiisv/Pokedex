@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, Text, View} from 'react-native';
+import {Text} from 'react-native';
 import {AlignCenter, MainLabel, PokemonContainer, PokemonTC} from './style';
 
 export const PokemonStatsContainer = ({pokemon}) => {
@@ -27,10 +27,6 @@ export const PokemonStatsContainer = ({pokemon}) => {
         {pokemon.pokemon.url.stats.map(item => {
           return Section(item);
         })}
-        {/* <FlatList
-          data={pokemon.pokemon.url.stats}
-          renderItem={({item}) => {}}
-        /> */}
       </PokemonContainer>
     </AlignCenter>
   );
