@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const PokemonThumbnail = styled.Image`
   width: 96px;
   height: 96px;
-  background-color: white;
+  background-color: ${p => p.color};
 `;
 
 export const PokemonContainer = styled.View`

@@ -6,6 +6,7 @@ import {PokemonStatsContainer} from '../pokemonStatsContainer';
 import {TypeContainer} from '../pokemonTypeContainer';
 import {MyBackButton} from '../../returnBack';
 import {PokemonLabel, ThumbnaiContainer} from './style';
+import {PokemonEvolutionContainer} from '../PokemonEvolutionContainer';
 
 export const PokemonMainPage = ({pokemon, navigation}) => {
   const color = {
@@ -43,6 +44,9 @@ export const PokemonMainPage = ({pokemon, navigation}) => {
       </ThumbnaiContainer>
       <TypeContainer color={color} pokemon={pokemon} />
       <PokemonStatsContainer pokemon={pokemon} />
+      <PokemonEvolutionContainer
+        pokemon={pokemon.pokemon.url.species.url.evolution_chain.url.chain}
+      />
       <MyBackButton title={'Retour au pokedex'} navigation={navigation} />
     </ScrollView>
   );

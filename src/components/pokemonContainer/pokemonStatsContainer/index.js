@@ -12,7 +12,6 @@ import {MD3Colors} from 'react-native-paper';
 
 export const PokemonStatsContainer = ({pokemon}) => {
   const Section = datainfos => {
-    console.log(datainfos);
     datainfos.stat.name = datainfos.stat.name
       .replace('special', 'Sp.')
       .replace('-defense', ' Def')

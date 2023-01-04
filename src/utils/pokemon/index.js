@@ -54,13 +54,61 @@ export const getPokemonsCount = async () => {
 
 export const getAllInfosOfOnePokemon = async ID => {
   try {
-    // console.log(`https://pokeapi.co/api/v2/pokemon-form/${ID}/`);
     const infos = await GetPokemonInfos(
       `https://pokeapi.co/api/v2/pokemon-form/${ID}/`,
     );
     infos.pokemon.url = await GetPokemonInfos(infos.pokemon.url);
+    infos.pokemon.url.species.url = await GetPokemonInfos(
+      infos.pokemon.url.species.url,
+    );
+    infos.pokemon.url.species.url.evolution_chain.url = await GetPokemonInfos(
+      infos.pokemon.url.species.url.evolution_chain.url,
+    );
+    console.log(
+      infos.pokemon.url.species.url.evolution_chain.url.chain.species.url,
+    );
+    infos.pokemon.url.species.url.evolution_chain.url.chain.species.url =
+      await GetPokemonInfos(
+        infos.pokemon.url.species.url.evolution_chain.url.chain.species.url,
+      );
+    infos.pokemon.url.species.url.evolution_chain.url.chain.species.url.varieties[0].pokemon.url =
+      await GetPokemonInfos(
+        infos.pokemon.url.species.url.evolution_chain.url.chain.species.url
+          .varieties[0].pokemon.url,
+      );
+
+    if (
+      infos.pokemon.url.species.url.evolution_chain.url.chain.evolves_to
+        .length !== 0
+    ) {
+      infos.pokemon.url.species.url.evolution_chain.url.chain.evolves_to[0].species.url =
+        await GetPokemonInfos(
+          infos.pokemon.url.species.url.evolution_chain.url.chain.evolves_to[0]
+            .species.url,
+        );
+      infos.pokemon.url.species.url.evolution_chain.url.chain.evolves_to[0].species.url.varieties[0].pokemon.url =
+        await GetPokemonInfos(
+          infos.pokemon.url.species.url.evolution_chain.url.chain.evolves_to[0]
+            .species.url.varieties[0].pokemon.url,
+        );
+      if (
+        infos.pokemon.url.species.url.evolution_chain.url.chain.evolves_to[0]
+          .evolves_to.length !== 0
+      ) {
+        infos.pokemon.url.species.url.evolution_chain.url.chain.evolves_to[0].evolves_to[0].species.url =
+          await GetPokemonInfos(
+            infos.pokemon.url.species.url.evolution_chain.url.chain
+              .evolves_to[0].evolves_to[0].species.url,
+          );
+        infos.pokemon.url.species.url.evolution_chain.url.chain.evolves_to[0].evolves_to[0].species.url.varieties[0].pokemon.url =
+          await GetPokemonInfos(
+            infos.pokemon.url.species.url.evolution_chain.url.chain
+              .evolves_to[0].evolves_to[0].species.url.varieties[0].pokemon.url,
+          );
+      }
+    }
+    // console.log(infos);
     await storeData('pokemonInfos', JSON.stringify(infos));
-    // console.log(await getData('pokemonInfos'));
   } catch (err) {
     console.log(err);
     return false;

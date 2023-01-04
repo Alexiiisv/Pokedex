@@ -1,4 +1,4 @@
-import {ScrollView, StyleSheet} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {LoginContainer} from '../../components/styled';
@@ -14,7 +14,7 @@ const Home = ({navigation}) => {
   const getAllPokemons = async () => {
     storeData('Pokemons', JSON.stringify([]));
     await GetPokemons(
-      'https://pokeapi.co/api/v2/pokemon-form/?limit=50',
+      'https://pokeapi.co/api/v2/pokemon-form/?limit=100',
       // 'https://pokeapi.co/api/v2/pokemon-form/?limit=' +
       //   (await getPokemonsCount()),
     );
@@ -44,6 +44,7 @@ const Home = ({navigation}) => {
             return PokemonFL({item, navigation});
           })}
         </ScrollView>
+        <View style={{height: 75}}></View>
       </LinearGradient>
     </LoginContainer>
   );
