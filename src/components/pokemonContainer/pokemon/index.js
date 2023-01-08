@@ -1,12 +1,13 @@
 import React from 'react';
-import {ScrollView, View} from 'react-native';
-import {SvgUri} from 'react-native-svg';
+import {Button, ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import {BackgroundMain} from '../pokemonBackground';
-import {PokemonStatsContainer} from '../pokemonStatsContainer';
 import {TypeContainer} from '../pokemonTypeContainer';
 import {MyBackButton} from '../../returnBack';
 import {PokemonLabel, ThumbnaiContainer} from './style';
-import {PokemonEvolutionContainer} from '../PokemonEvolutionContainer';
+import {PokemonDescription} from '../pokemonDescription';
+import {ImagePoke} from '../pokemonImage';
+import {PokemonSwitchView} from '../pokemonSwitchView';
+import {SvgUri} from 'react-native-svg';
 
 export const PokemonMainPage = ({pokemon, navigation}) => {
   const color = {
@@ -30,24 +31,27 @@ export const PokemonMainPage = ({pokemon, navigation}) => {
     fairy: '#E09AE3',
   };
   const typeColor0 = color[pokemon.pokemon.url.types[0].type.name];
-
+  const funId = () => {
+    const description = pokemon.pokemon.url.species.url.flavor_text_entries;
+    var result;
+    description.map(desc => {
+      if (desc.language.name === 'en') {
+        result = desc.flavor_text;
+      }
+    });
+    return result;
+  };
   return (
     <ScrollView>
       <BackgroundMain pokemon={pokemon} color={color} />
       <ThumbnaiContainer color={typeColor0}>
-        <SvgUri
-          width="150px"
-          height="150px"
-          uri={pokemon.pokemon.url.sprites.other.dream_world.front_default}
-        />
+        <ImagePoke sprites={pokemon.pokemon.url.sprites} />
         <PokemonLabel>{pokemon.name}</PokemonLabel>
       </ThumbnaiContainer>
+      <MyBackButton navigation={navigation} isGoBack={true} />
+      <PokemonDescription text={funId()} />
       <TypeContainer color={color} pokemon={pokemon} />
-      <PokemonStatsContainer pokemon={pokemon} />
-      <PokemonEvolutionContainer
-        pokemon={pokemon.pokemon.url.species.url.evolution_chain.url.chain}
-      />
-      <MyBackButton title={'Retour au pokedex'} navigation={navigation} />
+      <PokemonSwitchView pokemon={pokemon} />
     </ScrollView>
   );
 };

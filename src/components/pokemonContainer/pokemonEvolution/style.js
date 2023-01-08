@@ -15,6 +15,12 @@ export const EvolveLabel = styled.Text`
   color: white;
 `;
 
+export const NoEvolveLabel = styled.Text`
+  margin-top: 35px;
+  font-size: 20px;
+  color: white;
+`;
+
 export const RowView = styled.View`
   flex-direction: column;
 `;

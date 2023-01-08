@@ -1,10 +1,10 @@
 import {StyleSheet} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import React, {useEffect, useState} from 'react';
 import {LoginContainer, LoginFormContainer} from '../../components/styled';
-import {getData} from '../../utils/storage';
+import {getData, storeData} from '../../utils/storage';
 import {Loading} from '../../components/loading';
 import {PokemonMainPage} from '../../components/pokemonContainer/pokemon';
+import {LinearGradiantComp} from './style';
 
 const Pokemon = ({navigation}) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,6 +22,9 @@ const Pokemon = ({navigation}) => {
       setIsLoading(false);
       console.log('data pokemon: ');
       console.log(pokemon);
+      if (pokemon.length === 0) {
+        navigation.navigate('Home');
+      }
     } else {
       setpokeUpdate(true);
     }
@@ -32,23 +35,12 @@ const Pokemon = ({navigation}) => {
   return (
     <LoginContainer>
       <LoginFormContainer>
-        <LinearGradient
-          colors={['#4c669f', '#3b5998', '#192f6a']}
-          style={styles.linearGradient}>
+        <LinearGradiantComp colors={['#4c669f', '#3b5998', '#192f6a']}>
           <PokemonMainPage pokemon={pokemon} navigation={navigation} />
-        </LinearGradient>
+        </LinearGradiantComp>
       </LoginFormContainer>
     </LoginContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  linearGradient: {
-    flex: 1,
-    // paddingLeft: 15,
-    // paddingRight: 15,
-    justifyContent: 'center',
-  },
-});
 
 export default Pokemon;

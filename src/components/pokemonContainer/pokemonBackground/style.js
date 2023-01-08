@@ -9,5 +9,5 @@ export const ThumbnaiContainerr = styled.View`
 
 export const Background = styled.View`
   flex-direction: row;
-  height: 230px;
+  height: 180px;
 `;

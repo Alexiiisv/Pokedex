@@ -10,13 +10,26 @@ export const GetPokemons = async url => {
     console.log('résultat du call api GetPokemons');
     console.log(res.data.results);
 
-    const result = await Promise.all(
+    var result = await Promise.all(
       res.data.results.map(async object => {
+        const data = await GetPokemonInfos(
+          `https://pokeapi.co/api/v2/pokemon-form/${object.name}`,
+        );
         return {
           ...object,
-          infos: await GetPokemonInfos(
-            `https://pokeapi.co/api/v2/pokemon-form/${object.name}`,
-          ),
+          infos: data,
+        };
+      }),
+    );
+    result = await Promise.all(
+      result.map(async object => {
+        const data = await GetPokemonInfos(
+          `https://pokeapi.co/api/v2/pokemon/${object.name}`,
+        );
+        // console.log(data.sprites.other);
+        return {
+          ...object,
+          sprites: data.sprites,
         };
       }),
     );
@@ -33,10 +46,10 @@ export const GetPokemons = async url => {
 
 export const GetPokemonInfos = async URL => {
   try {
-    // console.log(Id);
     const res = await axios.get(URL);
     return res.data;
   } catch (err) {
+    await storeData('pokemonInfos', JSON.stringify([]));
     console.log(err);
     return false;
   }
@@ -63,9 +76,6 @@ export const getAllInfosOfOnePokemon = async ID => {
     );
     infos.pokemon.url.species.url.evolution_chain.url = await GetPokemonInfos(
       infos.pokemon.url.species.url.evolution_chain.url,
-    );
-    console.log(
-      infos.pokemon.url.species.url.evolution_chain.url.chain.species.url,
     );
     infos.pokemon.url.species.url.evolution_chain.url.chain.species.url =
       await GetPokemonInfos(
@@ -107,9 +117,9 @@ export const getAllInfosOfOnePokemon = async ID => {
           );
       }
     }
-    // console.log(infos);
     await storeData('pokemonInfos', JSON.stringify(infos));
   } catch (err) {
+    await storeData('pokemonInfos', JSON.stringify([]));
     console.log(err);
     return false;
   }

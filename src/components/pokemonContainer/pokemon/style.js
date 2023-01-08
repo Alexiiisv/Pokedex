@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const ThumbnaiContainer = styled.View`
   align-items: center;
   padding-top: 30px;
-  /* background-color: ${p => p.color}; */
   position: absolute;
   width: 100%;
 `;

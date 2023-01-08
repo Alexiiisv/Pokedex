@@ -1,14 +1,15 @@
 // import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {getAllInfosOfOnePokemon} from '../../../utils/pokemon';
+import {getData} from '../../../utils/storage';
+import {ImagePoke} from '../pokemonImage';
 import {
   PokemonContainer,
   PokemonLabel,
-  PokemonThumbnail,
   TouchableOpacityContainer,
 } from './style';
 
-export const PokemonFL = ({item, navigation}) => {
+export const PokemonFL = ({navigation, name, sprites}) => {
   const color = {
     normal: '#ADA594',
     fighting: '#A55239',
@@ -31,17 +32,15 @@ export const PokemonFL = ({item, navigation}) => {
   };
   return (
     <TouchableOpacityContainer
-      key={item.name}
+      disable
+      key={name}
       onPress={async () => {
-        await getAllInfosOfOnePokemon(item.infos.pokemon.name);
+        await getAllInfosOfOnePokemon(name);
         navigation.navigate('Pokemon');
       }}>
       <PokemonContainer>
-        <PokemonLabel>{item.name}</PokemonLabel>
-        <PokemonThumbnail
-          source={{uri: item.infos.sprites.front_default}}
-          color={color[item.infos.types[0].type.name]}
-        />
+        <PokemonLabel>{name}</PokemonLabel>
+        <ImagePoke sprites={sprites} />
       </PokemonContainer>
     </TouchableOpacityContainer>
   );

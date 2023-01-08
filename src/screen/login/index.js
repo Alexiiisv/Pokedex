@@ -3,14 +3,16 @@ import LinearGradient from 'react-native-linear-gradient';
 import React, {useState} from 'react';
 import {
   EnterApp,
+  LinearGradiantComp,
   LoginButton,
   LoginContainer,
   LoginFormContainer,
   LoginLabel,
   LoginLabelContainer,
   TextInputLogin,
-} from '../../components/styled';
+} from './style';
 import {sendGetRequest} from '../../utils/auth';
+import styled from 'styled-components';
 
 const Login = ({navigation}) => {
   const [IUsername, setIUsername] = useState('aze');
@@ -18,9 +20,7 @@ const Login = ({navigation}) => {
   return (
     <LoginContainer>
       <LoginFormContainer>
-        <LinearGradient
-          colors={['#4c669f', '#3b5998', '#192f6a']}
-          style={styles.linearGradient}>
+        <LinearGradiantComp colors={['#4c669f', '#3b5998', '#192f6a']}>
           <LoginLabelContainer>
             <LoginLabel>Username</LoginLabel>
             <TextInputLogin
@@ -39,28 +39,16 @@ const Login = ({navigation}) => {
           <LoginButton
             onPress={async () => {
               if (await sendGetRequest(IUsername, IPassword)) {
-                console.log('Réussite de la connexion du compte');
                 navigation.navigate('Home');
-              } else {
-                console.log('une erreur est subvenue lors de la connexion');
               }
             }}
             underlayColor="transparent">
             <EnterApp>Enter App</EnterApp>
           </LoginButton>
-        </LinearGradient>
+        </LinearGradiantComp>
       </LoginFormContainer>
     </LoginContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  linearGradient: {
-    flex: 1,
-    paddingLeft: 15,
-    paddingRight: 15,
-    justifyContent: 'center',
-  },
-});
 
 export default Login;
