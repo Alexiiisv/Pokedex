@@ -7,6 +7,7 @@ import theme from './src/config/theme';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {ThemeProvider} from 'styled-components';
+import FlashMessage from 'react-native-flash-message';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,7 @@ const App = () => {
           <Stack.Screen name="Pokemon" component={Pokemon} />
         </Stack.Navigator>
       </NavigationContainer>
+      <FlashMessage position="top" />
     </ThemeProvider>
   );
 };

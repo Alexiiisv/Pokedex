@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
+import {showMessage} from 'react-native-flash-message';
 import {SvgUri} from 'react-native-svg';
 import {getAllInfosOfOnePokemon} from '../../utils/pokemon';
 import {getData} from '../../utils/storage';
@@ -12,6 +13,7 @@ export const MyBackButton = ({navigation, isGoBack, name}) => {
   const [pokemon, setPokemon] = useState([]);
   const test = async () => {
     await getAllInfosOfOnePokemon(name);
+    await getAllInfosOfOnePokemon(name);
     setPokemon(await getData('pokemonInfos'));
   };
   if (isGoBack) {
@@ -20,6 +22,7 @@ export const MyBackButton = ({navigation, isGoBack, name}) => {
         <TouchableOpacity
           onPress={() => {
             navigation.goBack();
+            setPokemon([]);
           }}>
           <SvgUri
             width="100%"
@@ -40,10 +43,16 @@ export const MyBackButton = ({navigation, isGoBack, name}) => {
               return;
             }
             await test();
-            if (pokemon !== []) {
+            console.log(Object.keys(pokemon).length);
+            if (pokemon && Object.keys(pokemon).length !== 0) {
+              setPokemon([]);
               navigation.navigate('Pokemon');
             } else {
               console.log('Pokemon non existant');
+              showMessage({
+                message: "Ce pokemon n'existe pas",
+                type: 'info',
+              });
             }
           }}>
           <SvgUri

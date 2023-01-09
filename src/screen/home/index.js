@@ -13,7 +13,7 @@ const Home = ({navigation}) => {
   const getAllPokemons = async () => {
     storeData('Pokemons', JSON.stringify([]));
     await GetPokemons(
-      'https://pokeapi.co/api/v2/pokemon-form/?limit=151',
+      'https://pokeapi.co/api/v2/pokemon-form/?limit=50',
       // 'https://pokeapi.co/api/v2/pokemon-form/?limit=' +
       //   (await getPokemonsCount()),
     );
