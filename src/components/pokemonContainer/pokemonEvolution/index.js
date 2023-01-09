@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 import {SvgUri} from 'react-native-svg';
 import {PokemonEvolutionView} from '../pokemonEvolutionView';
 import {

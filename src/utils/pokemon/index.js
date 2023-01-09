@@ -23,6 +23,9 @@ export const GetPokemons = async url => {
     );
     result = await Promise.all(
       result.map(async object => {
+        // if (object.name.includes('-')) {
+        //   object.name = object.name.slice(0, object.name.indexOf('-'));
+        // }
         const data = await GetPokemonInfos(
           `https://pokeapi.co/api/v2/pokemon/${object.name}`,
         );

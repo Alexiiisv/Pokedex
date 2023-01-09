@@ -1,7 +1,6 @@
 // import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {getAllInfosOfOnePokemon} from '../../../utils/pokemon';
-import {getData} from '../../../utils/storage';
 import {ImagePoke} from '../pokemonImage';
 import {
   PokemonContainer,

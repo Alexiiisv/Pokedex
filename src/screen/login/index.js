@@ -1,5 +1,3 @@
-import {StyleSheet} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import React, {useState} from 'react';
 import {
   EnterApp,
@@ -12,11 +10,10 @@ import {
   TextInputLogin,
 } from './style';
 import {sendGetRequest} from '../../utils/auth';
-import styled from 'styled-components';
 
 const Login = ({navigation}) => {
-  const [IUsername, setIUsername] = useState('aze');
-  const [IPassword, setIPassword] = useState('azertyui');
+  const [IUsername, setIUsername] = useState('');
+  const [IPassword, setIPassword] = useState('');
   return (
     <LoginContainer>
       <LoginFormContainer>
