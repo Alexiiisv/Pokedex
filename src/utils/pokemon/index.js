@@ -7,8 +7,8 @@ export const GetPokemons = async url => {
   }
   try {
     const res = await axios.get(url);
-    console.log('résultat du call api GetPokemons');
-    console.log(res.data.results);
+    // console.log('résultat du call api GetPokemons');
+    // console.log(res.data.results);
 
     var result = await Promise.all(
       res.data.results.map(async object => {
@@ -36,7 +36,7 @@ export const GetPokemons = async url => {
         };
       }),
     );
-    console.log(result);
+    // console.log(result);
     await storeData('Pokemons', JSON.stringify(result));
     await storeData('nextListPokemon', JSON.stringify(res.data.next));
     await storeData('previousListPokemon', JSON.stringify(res.data.previous));
